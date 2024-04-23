@@ -1,0 +1,46 @@
+extend adminbase 
+
+block content
+    main.main 
+        //- .newcat--form 
+            //- form.form.form--cat#form--cat
+            //-     .form__group#new-cat.flex
+            //-         input#category.form__input(type='text' placeholder='' required)
+            //-         div.btn-cat.btn--green(type='text') Create
+                
+        .newpost-form
+            h2.heading Create new post
+            form.form.form--post
+                .form__group.form__photo-upload
+                 if(post)
+                    img(src=`/img/posts/${post.imageCover}`, width="300", height="200" , alt=`${post.title}`)
+                 input.form__upload(type='file', accept='image/*', id='imageCover', name='photo')
+                 label(for='imageCover') Choose new photo
+                .form__group.form__photo-upload
+                 input.form__upload(type='file', accept='image/*', id='image1', name='image1')
+                 label(for='image1') Choose new photo
+                //- .form__group.form__photo-upload
+                //-  input.form__upload(type='file', accept='image/*', id='image2', name='image2')
+                //-  label(for='image2') Choose new photo
+                //- .form__group.form__photo-upload
+                //-  input.form__upload(type='file', accept='image/*', id='image3', name='image3')
+                //-  label(for='image3') Choose new photo
+                .form__group
+                label.form__label(for='title') Title
+                input#title.form__input(type='text', placeholder='Lorum', required, value= post ? post.title : '' )
+                .form__group
+                   label.form__label(for='category') Select Category
+                   div.flex
+                    select#category.form__input(type='text', placeholder='Lorum', required)
+                        each category in categories 
+                            option(value= post ? post.category._id : category._id).form__option= category.name
+                    a.btn-cat.btn--green(type='text' href="/admin/category") New Categroy
+                .form__group.ma-bt-md
+                label.form__label(for='body') 
+                textarea#body.form__input(type='text', name="body", cols="30", rows="10", placeholder='', required, minlength='8' )= post ? post.body : ''
+                #postEdit--data(data-post_edit={ editMode: `${ post ? true : false}` , postId: post ? post._id : ""})
+                .form__group.ma-bt-md
+                    if post
+                        button.btn.btn--green Save 
+                    else
+                        button.btn.btn--green Create 

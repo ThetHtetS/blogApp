@@ -1,0 +1,68 @@
+extends adminbase
+
+block content
+   main.main
+      .container--table  
+        table.table
+            tr 
+                th.hideOnMobileAdmin Photo
+                th.title Title 
+                th.hideOnMobileAdmin Author
+                th edit
+                th delete
+            each post in posts
+                tr 
+                    td.hideOnMobileAdmin   
+                      img(src=`/img/posts/${post.imageCover}`, width="88", height="78" , alt=`${post.title}`)
+                    td.title= post.title
+                    td.hideOnMobileAdmin= post.author.name
+                    td 
+                      a.edit(href=`/admin/post/${post._id}`)
+                        button.btn--round.btn--green 
+                          svg(width="24px", height="24px")
+                            use(xlink:href="/img/icons.svg#icon-edit")
+                    td 
+                      button.btnDelete--post.btn--round.btn--red(data-post_id=post._id)
+                        svg(width="24px", height="24px")
+                          use(xlink:href="/img/icons.svg#icon-delete")
+
+      .pagination-section
+        .previous
+          a(href=`/admin/posts?page=${currentPage *1 -1}&limit=3`)
+            button.btn.btn--white
+              svg(width="32px", height="32px")
+                use(xlink:href="/img/icons.svg#icon-chevron-left")  
+        .next
+          a(href=`/admin/posts?page=${currentPage *1 +1}&limit=3`)          
+            button.btn.btn--white
+              svg(width="32px", height="32px")
+                use(xlink:href="/img/icons.svg#icon-chevron-right") 
+    
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+        //- .card
+        //-   .card__header
+        //-     .card__picture
+        //-       .card__picture-overlay &nbsp;
+        //-       img.card__picture-img(src=`/img/posts/${post.photo}`, alt=`${post.title}`)
+        //-   .card__details
+        //-     h1.card__text= post.title
+        //-     .card__data
+        //-       svg.card__icon
+        //-         use(xlink:href='/img/icons.svg#icon-calendar')
+        //-       span= post.createdAt.toLocaleString('en-us', {month: 'long', year: 'numeric'})
+            
+
+        //-   .card__footer
+           
+          
+        //-     a.btn.btn--green.btn--small(href=`/tour/${post.slug}`) Read More
+

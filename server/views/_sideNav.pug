@@ -1,0 +1,20 @@
+
+mixin navItem(link, text, icon, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`img/icons.svg#icon-${icon}`)
+      | #{text}
+
+.admin-nav
+    #adminMenuCloseBtn
+      svg(width="32px", height="32px")
+        use(xlink:href="http://localhost:4000/img/icons.svg#icon-menu")
+    h5.admin-nav__heading Admin
+    ul.side-nav
+        +navItem('/admin', 'Dashboard', 'map', link=='/admin' ? true : false)
+        +navItem('/admin/posts?page=1&limit=3', 'Blog Post', 'star', link=='/admin/posts' ? true : false)
+        +navItem('/admin/post/new', 'New Post', 'briefcase', link=='/admin/post/new' ? true : false)
+        +navItem('/admin/user', 'users', 'users', link=='/admin/users' ? true : false)
+        +navItem('/admin/category', 'Category', 'users',  link=='/admin/category' ? true : false)
+        

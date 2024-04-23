@@ -1,0 +1,21 @@
+extend adminbase 
+
+block content
+    main.main 
+        .container--table
+            table.table 
+                tr 
+                    th Name
+                    th Email
+                    th Role
+                    th Delete
+                    th Edit
+                each user in users
+                    tr 
+                        td.text-color-blue= user.name  
+                        td.text-color-blue= user.email
+                        td.text-color-blue= user.role
+                        td 
+                            btn.text-decoration-none#delete(type="text" data-user_id=user._id)  DELETE
+                        td 
+                            a.text-decoration-none(href="http://")  EDIT 

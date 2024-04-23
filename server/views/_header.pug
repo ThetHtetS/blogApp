@@ -1,0 +1,50 @@
+
+
+
+nav
+  .nav__el.logo 
+      a EssenceExplorer 
+  ul  
+    li.nav__el.hideOnMobile 
+      a Home 
+    li.nav__el.hideOnMobile
+      a category
+    
+    if user
+      li.nav__el.nav__el--logout.hideOnMobile 
+        a  Log out
+      li.nav__el.hideOnMobile 
+        a(href='/me')
+          img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
+          span= user.name.split(' ')[0]
+    else
+      li.nav__el.hideOnMobile 
+        a(href='/login') Log in
+      li.nav__el.nav__el--cta.hideOnMobile 
+        a(href='/signup') Sign up 
+
+    li.nav__el#userMenuBtn 
+      a Menu
+
+
+                      //-/////////////////////////nav sidebar /////////////////////////////
+.sidebar--nav
+  ul
+    li.nav__el#userMenuCloseBtn 
+      a Close  
+    li.nav__el 
+      a Home 
+    li.nav__el
+      a category
+    if user
+      li.nav__el--logout 
+        a Log out
+      li 
+        a.nav__el(href='/me')
+          img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
+          span= user.name.split(' ')[0]
+    else
+      li 
+        a.nav__el(href='/login') Log in
+      li 
+        a.nav__el.nav__el--cta(href='/signup') Sign up 

@@ -1,0 +1,38 @@
+extends base
+
+block content
+   include _heroSection
+   main.main 
+    //- .test-sticky hello Reviews
+    //- .test-container 
+    //-   - let array = [1,2,3,4,5,6]      
+    //-   each item in array 
+    //-     div(class= `test-item-${item} item`)= item
+    .card-container   
+      - let side_post = posts.slice(1)
+      .card(class= `item-1`)
+          .card__picture
+            //- .card__picture-overlay &nbsp;
+            img.card__picture-img(src=`/img/posts/${posts[0].imageCover}`, alt=`${posts[0].title}`)
+          .card__content
+            a.text-decoration-none(href=`/post/${posts[0].slug}`)
+            .card__title= posts[0].title
+            .card__data
+              p this is some text for paragraph introduction
+            .card__footer 
+              p Thet Htet Soe
+              span= posts[0].createdAt.toLocaleString('en-us', { year: "numeric", month: "2-digit", day: "numeric"})
+          
+      each post, index in side_post 
+        .card-side(class= `item-${index+2}`)
+          .card__picture 
+            //- .card__picture-overlay &nbsp;
+            img.card__picture-img(src=`/img/posts/${post.imageCover}`, alt=`${post.title}`)
+          .card__content-side
+            a.text-decoration-none(href=`/post/${post.slug}`)
+             .card__title--side= post.title
+            .card__footer 
+              p Thet Htet Soe
+              span= post.createdAt.toLocaleString('en-us', { year: "numeric", month: "2-digit", day: "numeric"})
+
+ 

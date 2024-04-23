@@ -1,0 +1,37 @@
+extends base
+include _commentCard
+
+block content
+  section.section-header
+    - const date = post.createdAt.toLocaleString('en-us', {month: 'long', year: 'numeric'})
+    div.headline
+      h2.heading=  post.title
+    div.byline   
+      div post.author.name 
+      div= date
+    .header__hero
+      img.header__hero-img(src=`/img/posts/${post.imageCover}`, alt=`${post.title}`)
+     
+
+  section.section-description
+      - const parapraphs = post.body.split('\n');
+      each p in parapraphs
+        p.description__text= p
+
+  //- section.section-pictures
+  //-   each img, i in post.images
+  //-     .picture-box
+  //-       img.picture-box__img(src=`/img/posts/${img}`, alt=`${i + 1}`, class=`picture-box__img--${i + 1}`)
+
+  section.section-comments
+      .comment-form 
+        h2.heading-secondary.ma-bt-lg Write your comments
+        form.form.form--comment
+          .form__group
+            textarea#comment.form__input(type='text', placeholder='', required, name="comment", cols="30", rows="3")
+            div#post(data-postId=post._id)
+          .form__group
+            button.btn.btn--green send
+      .comments
+        each comment in post.comments
+          +commentCard(comment)

@@ -1,0 +1,25 @@
+extend adminbase 
+
+block content
+    main.main 
+        form.form.form--category
+            .form__group
+            label.form__label(for='name') Category Name
+            .flex
+                input#name.form__input(type='text', placeholder='History', required)
+                button.btn.btn--green Create
+         
+        .container--table  
+            table.table 
+                tr 
+                    th Name
+                    th delete
+                    th edit
+                each catz in categories
+                    tr 
+                        td.text-color-blue= catz.name  
+                        td 
+                            btn.text-decoration-none.btnDelete--category(type="text" data-catid=catz._id)  DELETE
+                        td 
+                            button.btnEdit--category.btn.btn--green(data-edit=catz) EDIT
+                              
