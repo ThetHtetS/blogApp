@@ -7,7 +7,8 @@ export const signup = async (name, email, password, passwordConfirm) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:4000/api/v1/users/signup',
+      url: 'https://d13om1uypm19bv.cloudfront.net/api/v1/users/signup',
+      // url: 'http://localhost:4000/api/v1/users/signup',
       data: {
         name,
         email,
@@ -31,7 +32,8 @@ export const login = async (email, password) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:4000/api/v1/users/login',
+      url: 'https://d13om1uypm19bv.cloudfront.net/api/v1/users/login',
+      // url: 'http://localhost:4000/api/v1/users/login',
       data: {
         email,
         password
@@ -53,7 +55,7 @@ export const logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://localhost:4000/api/v1/users/logout'
+      url: 'https://d13om1uypm19bv.cloudfront.net/api/v1/users/logout'
     });
     if ((res.data.status = 'success')) location.reload(true);
   } catch (err) {

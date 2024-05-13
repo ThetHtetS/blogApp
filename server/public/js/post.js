@@ -7,7 +7,7 @@ export const createPost = async( form , data)=>{
     try {
         let res;
         if(data.editMode=='true') {
-          res = await axios.put(`http://localhost:4000/api/v1/posts/${data.postId}`, form, 
+          res = await axios.put(`https://d13om1uypm19bv.cloudfront.net/api/v1/posts/${data.postId}`, form, 
           {
             headers: {
               'Content-Type': 'multipart/form-data',
@@ -16,7 +16,7 @@ export const createPost = async( form , data)=>{
           );
         }
         else {
-          res = await axios.post(`http://localhost:4000/api/v1/posts`, form, {
+          res = await axios.post(`https://d13om1uypm19bv.cloudfront.net/api/v1/posts`, form, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },
